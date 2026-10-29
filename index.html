@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10070d">
+<title>Sahar & Amir — Our Little Universe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#10070d;--wine:#4b1025;--red:#ef4668;--rose:#ff9caf;--cream:#fff0e9;--muted:#cbb4bd;--gold:#d8b58b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--cream);font-family:'Vazirmatn',sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 20% 20%,#70203b44,transparent 42%),radial-gradient(ellipse at 80% 70%,#3d172f55,transparent 40%);z-index:-2}
+button{font:inherit}.intro{position:fixed;inset:0;z-index:20;display:grid;place-items:center;background:radial-gradient(ellipse at center,#35101f 0,#170a12 52%,#090609 100%);transition:opacity 1s ease,visibility 1s ease;overflow:hidden}
+.intro.hidden{opacity:0;visibility:hidden;pointer-events:none}.stars,.stars:before,.stars:after{position:absolute;inset:0;content:"";background-image:radial-gradient(2px 2px at 15% 25%,#fff8,transparent),radial-gradient(1px 1px at 72% 20%,#ffd9e4,transparent),radial-gradient(2px 2px at 85% 75%,#fff8,transparent),radial-gradient(1px 1px at 33% 82%,#fff8,transparent),radial-gradient(1px 1px at 54% 43%,#ffb6c8,transparent);animation:twinkle 5s ease-in-out infinite alternate}
+.stars:before{transform:translateY(12px);opacity:.6;animation-delay:1s}.stars:after{transform:translateY(-12px);opacity:.4;animation-delay:2s}
+.intro-content{width:min(92vw,650px);text-align:center;position:relative;z-index:2;padding:20px}.names{font-family:'DM Serif Display',serif;direction:ltr;font-size:clamp(2.5rem,9vw,5.4rem);letter-spacing:.02em;margin:0 0 10px;color:#fff1f4;text-shadow:0 0 35px #f34b7840;animation:rise 1.2s both}.names .amp{color:var(--red);font-style:italic}.tagline{color:#e4c4ce;font-size:.9rem;letter-spacing:.06em;margin-bottom:42px;animation:rise 1.4s both}
+.envelope-wrap{width:min(84vw,420px);aspect-ratio:1.45;margin:0 auto 28px;perspective:1000px;filter:drop-shadow(0 24px 50px #0009);animation:float 4s ease-in-out infinite}
+.envelope{width:100%;height:100%;position:relative;cursor:pointer;border:0;background:transparent;padding:0;transform-style:preserve-3d;outline:none}
+.env-back{position:absolute;inset:0;background:linear-gradient(145deg,#8e2948,#51132b 70%);border:1px solid #ffb0c44d;border-radius:7px;box-shadow:inset 0 0 35px #210714}
+.env-paper{position:absolute;left:7%;right:7%;top:7%;height:82%;border-radius:4px;background:linear-gradient(145deg,#fff0e5,#e8c6c5);transition:transform 1s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 18px #0004}
+.env-paper:after{content:"S + A";font-family:'DM Serif Display',serif;direction:ltr;color:#7b203d;font-size:clamp(1.3rem,4vw,2rem);position:absolute;inset:0;display:grid;place-items:center}
+.env-left,.env-right,.env-bottom{position:absolute;inset:0;border-radius:6px;overflow:hidden}
+.env-left:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#6f1b36,#9b2b4d);clip-path:polygon(0 0,52% 52%,0 100%)}
+.env-right:before{content:"";position:absolute;inset:0;background:linear-gradient(225deg,#551329,#8b2544);clip-path:polygon(100% 0,48% 52%,100% 100%)}
+.env-bottom:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#4a1024,#9e2a4e);clip-path:polygon(0 100%,50% 43%,100% 100%)}
+.env-flap{position:absolute;inset:0;background:linear-gradient(160deg,#b33d60,#741b38);clip-path:polygon(0 0,100% 0,50% 60%);transform-origin:top;transition:transform .85s cubic-bezier(.2,.8,.2,1);z-index:4;filter:drop-shadow(0 3px 4px #25051255)}
+.seal{position:absolute;z-index:6;left:50%;top:51%;transform:translate(-50%,-50%);width:70px;height:70px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 25%,#ffb6c5,#ed4168 48%,#8e163a);box-shadow:0 0 0 5px #f6a3b522,0 0 35px #ff3b6c77,inset 0 2px 8px #fff6;color:white;font-size:2rem;transition:transform .35s,opacity .4s}
+.envelope:hover .seal{transform:translate(-50%,-50%) scale(1.1)}.envelope.opened .env-flap{transform:rotateX(180deg);z-index:1}.envelope.opened .env-paper{transform:translateY(-35%);transition-delay:.2s}.envelope.opened .seal{opacity:0;transform:translate(-50%,-50%) scale(.3)}
+.tap{font-size:.82rem;color:#f2bdcc;animation:pulse 2s infinite}.intro-foot{margin-top:35px;font-family:'DM Serif Display',serif;font-size:.8rem;letter-spacing:.2em;color:#9d7886;direction:ltr}
+main{opacity:0;transform:translateY(20px);transition:opacity 1s ease,transform 1s ease}main.visible{opacity:1;transform:none}
+.hero{min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 22px 60px;position:relative;overflow:hidden}.hero:before{content:"♡";font-family:serif;position:absolute;font-size:min(90vw,650px);color:#ff64800a;line-height:1;top:10%;left:50%;transform:translateX(-50%);pointer-events:none}
+.hero-inner{position:relative;max-width:850px}.eyebrow{color:var(--rose);letter-spacing:.2em;font-size:.75rem;text-transform:uppercase;direction:ltr}.hero h1{font-family:'DM Serif Display',serif;direction:ltr;font-size:clamp(3rem,10vw,7rem);line-height:1.02;margin:22px 0;color:#fff0f3;font-weight:400}.hero h1 span{color:var(--red);font-style:italic}.hero p{font-size:1rem;line-height:2;color:#dfc8d0;max-width:570px;margin:0 auto 30px}.scroll-btn{display:inline-flex;align-items:center;gap:10px;color:#fff0f3;border:1px solid #e76a8755;padding:12px 22px;border-radius:99px;text-decoration:none;background:#ffffff07;transition:.3s}.scroll-btn:hover{background:#e63d6322;transform:translateY(-3px)}
+.section{padding:75px 20px;max-width:1100px;margin:auto}.section-head{text-align:center;margin-bottom:35px}.section-head .mini{color:var(--rose);font-size:.8rem;letter-spacing:.15em}.section-head h2{font-family:'DM Serif Display',serif;direction:ltr;font-size:clamp(2rem,6vw,3.6rem);font-weight:400;margin:10px 0}.section-head p{color:var(--muted);line-height:1.9;margin:0}
+.memory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.memory-card{position:relative;border:1px solid #ffb6c51b;background:linear-gradient(145deg,#ffffff0a,#ffffff03);padding:9px;border-radius:18px;overflow:hidden;transition:transform .4s,border-color .4s}.memory-card:hover{transform:translateY(-6px);border-color:#ff809b66}.memory-card img{width:100%;height:clamp(190px,40vw,380px);object-fit:cover;display:block;border-radius:11px;cursor:zoom-in;filter:saturate(.88);transition:filter .5s}.memory-card:hover img{filter:saturate(1.05)}.memory-card .caption{padding:13px 7px 7px}.caption h3{font-size:.95rem;margin:0 0 5px;font-weight:500}.caption p{font-size:.78rem;color:var(--muted);margin:0;line-height:1.8}.date{color:var(--rose);font-size:.72rem;direction:ltr;display:inline-block}
+.timeline{max-width:720px;margin:auto;position:relative}.timeline:before{content:"";position:absolute;top:8px;bottom:8px;right:17px;width:1px;background:linear-gradient(var(--red),#e3a4b6,transparent)}.event{position:relative;padding:0 52px 30px 0}.event:before{content:"♥";position:absolute;right:7px;top:0;width:21px;height:21px;display:grid;place-items:center;font-size:.65rem;color:#fff;background:#8c2443;border:1px solid #ff8fa8;border-radius:50%;box-shadow:0 0 16px #ff426755}.event time{font-size:.75rem;color:var(--rose);direction:ltr;display:inline-block}.event h3{margin:7px 0;font-size:1.05rem}.event p{color:var(--muted);line-height:1.9;font-size:.9rem;margin:0}
+.love-note{max-width:760px;margin:auto;text-align:center;padding:38px 26px;border:1px solid #e66b8733;border-radius:24px;background:linear-gradient(135deg,#64192d44,#ffffff04);position:relative;overflow:hidden}.love-note .big-heart{font-size:2rem;color:var(--red);text-shadow:0 0 25px #ff315b55}.love-note p{font-size:1rem;line-height:2.2;color:#f4dfe5;margin:15px auto 0;max-width:620px}
+footer{text-align:center;padding:45px 15px 35px;color:#a98b96;font-size:.8rem;border-top:1px solid #ffffff0d}footer .signature{font-family:'DM Serif Display',serif;direction:ltr;color:#f3c2ce;font-size:1.5rem;margin-bottom:8px}
+.lightbox{position:fixed;inset:0;background:#050205ed;z-index:50;display:none;align-items:center;justify-content:center;padding:20px}.lightbox.show{display:flex}.lightbox img{max-width:95vw;max-height:88vh;object-fit:contain;border-radius:10px}.close{position:absolute;top:18px;left:20px;border:1px solid #ffffff44;color:white;background:#ffffff12;border-radius:50%;width:42px;height:42px;font-size:1.3rem;cursor:pointer}
+.float-heart{position:fixed;bottom:-30px;z-index:1;color:#ff668b;opacity:0;pointer-events:none;animation:drift 8s linear forwards}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(1deg)}}@keyframes twinkle{from{opacity:.4}to{opacity:1}}@keyframes pulse{0%,100%{opacity:.65}50%{opacity:1}}@keyframes drift{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.55}90%{opacity:.4}100%{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+@media(min-width:720px){.memory-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.memory-card:first-child{grid-column:span 2}.memory-card:first-child img{height:520px}.hero{min-height:100vh}}
+@media(max-width:420px){.memory-grid{gap:10px}.memory-card{padding:6px;border-radius:13px}.memory-card img{height:205px}.memory-card .caption{padding:10px 5px 5px}.caption h3{font-size:.82rem}.caption p{font-size:.7rem}.section{padding:58px 14px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="intro" id="intro">
+  <div class="stars"></div>
+  <div class="intro-content">
+    <h1 class="names">Sahar <span class="amp">&</span> Amir</h1>
+    <div class="tagline">a little universe, just for us</div>
+    <div class="envelope-wrap">
+      <button class="envelope" id="envelope" aria-label="ورود به دنیای دونفره">
+        <span class="env-back"></span><span class="env-paper"></span><span class="env-left"></span><span class="env-right"></span><span class="env-bottom"></span><span class="env-flap"></span><span class="seal">♥</span>
+      </button>
+    </div>
+    <div class="tap">برای ورود، قلب را لمس کن ♡</div>
+    <div class="intro-foot">OUR STORY · EST. 1405</div>
+  </div>
+</div>
+<main id="main">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">OUR LITTLE UNIVERSE</div>
+      <h1>Sahar <span>&</span> Amir</h1>
+      <p>بعضی آدم‌ها اتفاقی وارد زندگی‌ات نمی‌شوند؛ می‌آیند تا روزهای معمولی را به خاطره‌هایی تبدیل کنند که همیشه لبخند می‌آورند.</p>
+      <a class="scroll-btn" href="#memories">قدم زدن در خاطرات <span>↓</span></a>
+    </div>
+  </section>
+  <section class="section" id="memories">
+    <div class="section-head"><div class="mini">THE MOMENTS WE KEEP</div><h2>Our Memories</h2><p>چند قاب کوچک از دنیای بزرگ دونفره‌مان</p></div>
+    <div class="memory-grid">
+      <article class="memory-card"><img src="assets/memory-1.jpg" alt="خاطره آغوش در شب بارانی" loading="lazy"><div class="caption"><h3>آغوشی وسط شب بارانی</h3><p>بعضی لحظه‌ها را نمی‌شود توضیح داد؛ فقط باید تا همیشه نگه‌شان داشت.</p><span class="date">1405/7/29</span></div></article>
+      <article class="memory-card"><img src="assets/memory-2.jpg" alt="خاطره سیاه و سفید دونفره" loading="lazy"><div class="caption"><h3>یک قاب، هزار حس</h3><p>حتی وقتی همه‌چیز سیاه‌وسفید است، بعضی آدم‌ها رنگ زندگی‌اند.</p><span class="date">1405/7/29</span></div></article>
+      <article class="memory-card"><img src="assets/memory-3.jpg" alt="دست‌های درهم گره خورده" loading="lazy"><div class="caption"><h3>دستت توی دستم</h3><p>گاهی تمام آرامش دنیا، در همین دست‌های گره‌خورده خلاصه می‌شود.</p><span class="date">1405/7/29</span></div></article>
+      <article class="memory-card"><img src="assets/memory-4.jpg" alt="خاطره دست‌های رنگی" loading="lazy"><div class="caption"><h3>رنگی از جنس خاطره</h3><p>دست‌هامون رنگی شد، اما چیزی که ساختیم از رنگ‌ها ماندگارتره.</p><span class="date">1405/8/5</span></div></article>
+    </div>
+  </section>
+  <section class="section" id="timeline">
+    <div class="section-head"><div class="mini">CHAPTERS OF US</div><h2>Our Story</h2><p>داستان ما، از اولین روز تا خاطره‌هایی که هنوز نساخته‌ایم</p></div>
+    <div class="timeline">
+      <article class="event"><time>1405/7/12</time><h3>شروع داستان ما ♡</h3><p>روزی که آشنایی‌مان شروع شد؛ یک تاریخ ساده که برای ما معنای خاصی پیدا کرد.</p></article>
+      <article class="event"><time>1405/7/29</time><h3>یک شب که ماندگار شد</h3><p>زیر نور چراغ‌ها و روی خیابان خیس، لحظه‌هایی ساختیم که دلمان می‌خواهد دوباره زندگی‌شان کنیم.</p></article>
+      <article class="event"><time>1405/8/5</time><h3>دست‌هایی با رنگ خاطره 🎨</h3><p>یک خاطره متفاوت و رنگی؛ از آن لحظه‌هایی که فقط خودمان می‌دانیم چقدر دوست‌داشتنی‌اند.</p></article>
+    </div>
+  </section>
+  <section class="section" id="letter">
+    <div class="section-head"><div class="mini">A LITTLE NOTE FOR YOU</div><h2>For You, Sahar</h2></div>
+    <div class="love-note"><div class="big-heart">♥</div><p>سحر جان،<br>نمی‌دونم آینده چه خاطره‌هایی برامون کنار گذاشته، اما می‌دونم دلم می‌خواد توی خیلی از اون‌ها کنارم باشی. دوست دارم روزهای ساده‌مون هم قشنگ باشن، خنده‌هامون واقعی باشن و وقتی به گذشته نگاه می‌کنیم، از لحظه‌هایی که با هم ساختیم لبخند بزنیم. اینجا گوشه کوچیکی از دنیای ماست؛ جایی برای نگه داشتن چیزهایی که برای بقیه شاید معمولی باشن، اما برای ما عزیزن. <br><span style="color:#ff9caf">دوستت دارم، بیشتر از چیزی که توی چند خط جا بشه.</span></p></div>
+  </section>
+  <footer><div class="signature">Sahar & Amir ♡</div><div>ساخته‌شده از خاطره‌ها، برای خاطره‌های بیشتر</div><div style="margin-top:12px;direction:ltr;letter-spacing:.15em;font-size:.65rem">ONLY OUR LITTLE WORLD</div></footer>
+</main>
+<div class="lightbox" id="lightbox"><button class="close" id="close" aria-label="بستن">×</button><img id="lightbox-img" alt="نمای بزرگ عکس"></div>
+<script>
+const envelope=document.getElementById('envelope'), intro=document.getElementById('intro'), main=document.getElementById('main');
+let opened=false;
+envelope.addEventListener('click',()=>{
+ if(opened)return; opened=true; envelope.classList.add('opened');
+ setTimeout(()=>{intro.classList.add('hidden');main.classList.add('visible');window.scrollTo({top:0,behavior:'smooth'});startHearts()},900);
+});
+function startHearts(){setInterval(()=>{if(document.hidden)return;const h=document.createElement('span');h.className='float-heart';h.textContent=Math.random()>.5?'♡':'♥';h.style.left=Math.random()*100+'vw';h.style.fontSize=(12+Math.random()*20)+'px';h.style.animationDuration=(6+Math.random()*5)+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),12000)},850)}
+const lightbox=document.getElementById('lightbox'), lbimg=document.getElementById('lightbox-img');
+document.querySelectorAll('.memory-card img').forEach(img=>img.addEventListener('click',()=>{lbimg.src=img.src;lightbox.classList.add('show')}));
+function closeBox(){lightbox.classList.remove('show');lbimg.src=''}
+document.getElementById('close').addEventListener('click',closeBox);
+lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeBox()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBox()});
+</script>
+</body>
+</html>
